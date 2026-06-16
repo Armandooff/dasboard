@@ -1,0 +1,21 @@
+{
+  "name": "dashboard-monitoramento-logistico",
+  "version": "1.0.0",
+  "description": "Dashboard funcional para monitoramento logistico, atrasos, transportadoras e regioes criticas.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "dashboard",
+    "logistica",
+    "railway",
+    "html",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
