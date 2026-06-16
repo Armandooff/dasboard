@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Monitoramento LogÃ­stico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>Dashboard de Monitoramento LogÃ­stico</h1>
+        <p class="subtitle">AnÃ¡lise de atrasos, transportadoras e regiÃµes crÃ­ticas</p>
+      </div>
+      <div class="stamp"><i class="dot"></i><span>Atualizado com amostra operacional</span></div>
+    </header>
+
+    <section class="kpis" id="kpis" aria-label="Indicadores principais"></section>
+
+    <section class="filters" aria-label="Filtros do dashboard">
+      <label>RegiÃ£o
+        <select id="regionFilter"></select>
+      </label>
+      <label>Transportadora
+        <select id="carrierFilter"></select>
+      </label>
+      <label>Status
+        <select id="statusFilter"></select>
+      </label>
+      <label>Prioridade
+        <select id="priorityFilter"></select>
+      </label>
+      <label>Data inicial
+        <input type="date" id="startDate">
+      </label>
+      <label>Data final
+        <input type="date" id="endDate">
+      </label>
+      <button id="clearFilters" type="button">Limpar filtros</button>
+    </section>
+
+    <section class="alerts" id="alerts" aria-label="Alertas operacionais"></section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>ComparaÃ§Ã£o entre transportadoras por atrasos</h2>
+          <span class="hint">Quantidade de entregas atrasadas</span>
+        </div>
+        <svg class="chart" id="carrierChart" role="img"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>AnÃ¡lise de atrasos por regiÃ£o</h2>
+          <span class="hint">ConcentraÃ§Ã£o regional</span>
+        </div>
+        <svg class="chart" id="regionChart" role="img"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>EvoluÃ§Ã£o dos atrasos ao longo do tempo</h2>
+          <span class="hint">Por data prevista</span>
+        </div>
+        <svg class="chart" id="timelineChart" role="img"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Ranking das transportadoras com pior desempenho</h2>
+          <span class="hint">Ãndice de atraso</span>
+        </div>
+        <div class="rank-list" id="ranking"></div>
+      </article>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="panel-head">
+        <h2>Entregas mais crÃ­ticas</h2>
+        <span class="hint">Ordenadas por dias de atraso e prioridade</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID da entrega</th>
+              <th>Cliente</th>
+              <th>RegiÃ£o</th>
+              <th>Transportadora</th>
+              <th>Data prevista</th>
+              <th>Data real</th>
+              <th>Dias de atraso</th>
+              <th>Status</th>
+              <th>Prioridade</th>
+            </tr>
+          </thead>
+          <tbody id="criticalTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="logic">
+      <h2>LÃ³gica utilizada</h2>
+      <div class="logic-grid">
+        <div class="logic-item">
+          <b>IdentificaÃ§Ã£o dos atrasos</b>
+          <p>Os atrasos foram identificados comparando a data prevista com a data real. Quando a data real Ã© maior que a data prevista, a entrega entra como atrasada e recebe a quantidade de dias de atraso.</p>
+        </div>
+        <div class="logic-item">
+          <b>CÃ¡lculos dos indicadores</b>
+          <p>O percentual de atraso foi calculado dividindo entregas atrasadas pelo total de entregas filtradas. A mÃ©dia de atraso usa apenas entregas atrasadas, somando os dias de atraso e dividindo pela quantidade de ocorrÃªncias.</p>
+        </div>
+        <div class="logic-item">
+          <b>CritÃ©rios de priorizaÃ§Ã£o</b>
+          <p>A priorizaÃ§Ã£o foi feita com base na quantidade de dias de atraso, regiÃ£o, transportadora e impacto operacional. Atrasos de 1 a 2 dias sÃ£o baixa prioridade, de 3 a 5 dias sÃ£o mÃ©dia prioridade e acima de 5 dias sÃ£o alta prioridade.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+

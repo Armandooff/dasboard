@@ -2,7 +2,28 @@
 
 Dashboard funcional para monitoramento de atrasos, transportadoras, regioes criticas e entregas prioritarias.
 
+## Como abrir pelo GitHub Pages
+
+Este projeto esta preparado para rodar como site estatico no GitHub Pages.
+
+1. Suba os arquivos para o GitHub.
+2. No repositorio, entre em **Settings**.
+3. Acesse **Pages**.
+4. Em **Build and deployment**, selecione:
+   - Source: **Deploy from a branch**
+   - Branch: **main**
+   - Folder: **/root**
+5. Salve e aguarde o GitHub gerar o link.
+
+O link deve ficar parecido com:
+
+```text
+https://armandooff.github.io/dasboard/
+```
+
 ## Como rodar localmente
+
+Voce pode abrir o arquivo `index.html` direto no navegador ou rodar com Node:
 
 ```bash
 npm start
@@ -14,22 +35,14 @@ Depois acesse:
 http://localhost:3000
 ```
 
-## Como publicar no Railway
-
-1. Suba este projeto para um repositorio no GitHub.
-2. No Railway, escolha **New Project**.
-3. Selecione **Deploy from GitHub repo**.
-4. Escolha o repositorio deste projeto.
-5. O Railway vai executar automaticamente:
-
-```bash
-npm start
-```
-
-O servidor usa a variavel `PORT` fornecida pelo Railway, entao nao precisa configurar porta manualmente.
-
 ## Arquivos principais
 
-- `dashboard-logistico.html`: interface, dados ficticios, filtros, indicadores, graficos e tabela.
-- `server.js`: servidor Node nativo para hospedar o dashboard.
-- `package.json`: comando de inicializacao para deploy.
+- `index.html`: estrutura da interface do dashboard.
+- `style.css`: estilos visuais e responsividade.
+- `script.js`: dados ficticios, filtros, indicadores, graficos e tabela.
+- `server.js`: servidor Node opcional para teste local ou Railway.
+- `package.json`: comando de inicializacao para ambiente Node.
+
+## Publicacao alternativa no Railway
+
+O projeto tambem continua compativel com Railway. O servidor usa a variavel `PORT` fornecida pela plataforma, entao nao precisa configurar porta manualmente.
